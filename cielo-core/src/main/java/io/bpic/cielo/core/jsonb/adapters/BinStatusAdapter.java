@@ -7,5 +7,5 @@ import io.bpic.cielo.core.ecommerce.BinStatus;
  *
  * @author paler
  */
-public class BinStatusMapper extends EnumMapperBase<BinStatus> {
+public class BinStatusAdapter extends EnumMapperBase<BinStatus> {
 }

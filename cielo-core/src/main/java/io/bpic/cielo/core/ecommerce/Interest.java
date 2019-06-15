@@ -1,19 +1,20 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
  * Created: 24/10/2018 00:46.
  *
  * @author Bruno Palermo
  */
-@XmlEnum
 public enum Interest {
 
-    @XmlEnumValue("ByMerchant")
+    @JsonbProperty("ByMerchant")
     BY_MERCHANT,
 
-    @XmlEnumValue("ByIssuer")
+    @JsonbProperty("ByIssuer")
     BY_ISSUER,
+
+    @JsonbProperty("0")
+    SANDBOX,
 }

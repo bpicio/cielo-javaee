@@ -1,26 +1,25 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
  * Created: 23/10/2018 22:55.
  *
  * @author Bruno Palermo
  */
-@XmlEnum
-public enum CardType {
+public enum PaymentType {
 
-    @XmlEnumValue(value = "CreditCard")
+    @JsonbProperty(value = "CreditCard")
     CREDIT_CARD,
 
-    @XmlEnumValue(value = "DebitCard")
+    @JsonbProperty(value = "DebitCard")
     DEBIT_CARD,
 
-    @XmlEnumValue(value = "ElectronicTransfer")
-    ELETRONIC_TRANSFER,
+    // Typing error
+    @JsonbProperty(value = "EletronicTransfer")
+    ELECTRONIC_TRANSFER,
 
-    @XmlEnumValue("Boleto")
+    @JsonbProperty("Boleto")
     BOLETO
 
 }

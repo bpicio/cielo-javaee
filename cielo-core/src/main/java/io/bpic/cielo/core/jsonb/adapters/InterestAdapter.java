@@ -7,5 +7,5 @@ import io.bpic.cielo.core.ecommerce.Interest;
  *
  * @author paler
  */
-public class InterestMapper extends EnumMapperBase<Interest> {
+public class InterestAdapter extends EnumMapperBase<Interest> {
 }

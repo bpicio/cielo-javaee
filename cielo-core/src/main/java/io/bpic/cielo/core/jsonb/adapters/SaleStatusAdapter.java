@@ -7,5 +7,5 @@ import io.bpic.cielo.core.ecommerce.SaleStatus;
  *
  * @author paler
  */
-public class SaleStatusMapper extends EnumMapperBase<SaleStatus> {
+public class SaleStatusAdapter extends EnumMapperBase<SaleStatus> {
 }

@@ -1,6 +1,6 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.*;
+import javax.json.bind.annotation.JsonbProperty;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,44 +9,43 @@ import java.util.List;
  *
  * @author Bruno Palermo
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@SuppressWarnings("WeakerAccess")
 public class SaleResponse {
 
-    @XmlElement(name = "MerchantOrderId")
+    @JsonbProperty(value = "MerchantOrderId")
     private String merchantOrderId;
 
-    @XmlElement(name = "Customer")
+    @JsonbProperty(value = "Customer")
     private Customer customer;
 
-    @XmlElement(name = "Payment")
+    @JsonbProperty(value = "Payment")
     private Payment payment;
 
-    @XmlElement(name = "Status")
+    @JsonbProperty(value = "SaleStatus")
     private String status;
 
-    @XmlElement(name = "ReasonCode")
+    @JsonbProperty(value = "ReasonCode")
     private String reasonCode;
 
-    @XmlElement(name = "ReasonMessage")
+    @JsonbProperty(value = "ReasonMessage")
     private String reasonMessage;
 
-    @XmlElement(name = "ProviderReturnCode")
+    @JsonbProperty(value = "ProviderReturnCode")
     private String providerReturnCode;
 
-    @XmlElement(name = "ProviderReturnMessage")
+    @JsonbProperty(value = "ProviderReturnMessage")
     private String providerReturnMessage;
 
-    @XmlElement(name = "ReturnCode")
+    @JsonbProperty(value = "ReturnCode")
     private String returnCode;
 
-    @XmlElement(name = "ReturnMessage")
+    @JsonbProperty(value = "ReturnMessage")
     private String returnMessage;
 
-    @XmlElement(name = "AuthenticationUrl")
+    @JsonbProperty(value = "AuthenticationUrl")
     private String authenticationUrl;
 
-    @XmlElement(name = "Link")
+    @JsonbProperty(value = "Link")
     private List<Link> links = new ArrayList<>();
 
     public SaleResponse() {

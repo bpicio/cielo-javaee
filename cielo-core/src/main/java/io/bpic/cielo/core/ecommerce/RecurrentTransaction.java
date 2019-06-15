@@ -1,26 +1,21 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
  * Created: 23/10/2018 23:08.
  *
  * @author Bruno Palermo
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class RecurrentTransaction {
 
-    @XmlElement(name ="PaymentId")
+    @JsonbProperty(value ="PaymentId")
     private String paymentId;
 
-    @XmlElement(name ="PaymentNumber")
+    @JsonbProperty(value ="PaymentNumber")
     private Integer paymentNumber;
 
-    @XmlElement(name ="TryNumber")
+    @JsonbProperty(value ="TryNumber")
     private Integer tryNumber;
 
     public String getPaymentId() {

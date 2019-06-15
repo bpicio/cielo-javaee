@@ -1,29 +1,27 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
  * Created: 23/10/2018 23:03.
  *
  * @author Bruno Palermo
  */
-@XmlEnum
 public enum RecurrentInterval {
 
-    @XmlEnumValue(value = "Monthly")
+    @JsonbProperty(value = "Monthly")
     MONTHLY,
 
-    @XmlEnumValue(value = "Bimonthly")
+    @JsonbProperty(value = "Bimonthly")
     BI_MONTHLY,
 
-    @XmlEnumValue(value = "Quarterly")
+    @JsonbProperty(value = "Quarterly")
     QUATERLY,
 
-    @XmlEnumValue(value = "SemiAnnual")
+    @JsonbProperty(value = "SemiAnnual")
     SEMI_ANNUAL,
 
-    @XmlEnumValue(value = "Annual")
+    @JsonbProperty(value = "Annual")
     ANNUAL
 
 }

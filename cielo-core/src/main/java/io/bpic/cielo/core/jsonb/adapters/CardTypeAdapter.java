@@ -7,5 +7,5 @@ import io.bpic.cielo.core.ecommerce.CardType;
  *
  * @author paler
  */
-public class CardTypeMapper extends EnumMapperBase<CardType> {
+public class CardTypeAdapter extends EnumMapperBase<CardType> {
 }

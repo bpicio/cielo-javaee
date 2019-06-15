@@ -1,10 +1,6 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import java.time.MonthDay;
+import javax.json.bind.annotation.JsonbProperty;
 import java.time.YearMonth;
 
 /**
@@ -12,23 +8,25 @@ import java.time.YearMonth;
  *
  * @author Bruno Palermo
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@SuppressWarnings("WeakerAccess")
 public class DebitCard {
 
-    @XmlElement(name ="CardNumber")
+    @JsonbProperty(value ="CardNumber")
     private String cardNumber;
 
-    @XmlElement(name ="Holder")
+    @JsonbProperty(value ="Holder")
     private String holder;
 
-    @XmlElement(name ="ExpirationDate")
+    @JsonbProperty(value ="ExpirationDate")
     private YearMonth expirationDate;
 
-    @XmlElement(name ="SecurityCode")
+    @JsonbProperty(value ="SecurityCode")
     private String securityCode;
 
-    @XmlElement(name ="Brand")
+    @JsonbProperty(value ="SaveCard")
+    private boolean saveCard;
+
+    @JsonbProperty(value ="Brand")
     private Brand brand;
 
     public DebitCard() {
@@ -73,6 +71,14 @@ public class DebitCard {
     public DebitCard setHolder(String holder) {
         this.holder = holder;
         return this;
+    }
+
+    public boolean isSaveCard() {
+        return saveCard;
+    }
+
+    public void setSaveCard(boolean saveCard) {
+        this.saveCard = saveCard;
     }
 
     public String getSecurityCode() {

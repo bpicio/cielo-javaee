@@ -1,4 +1,4 @@
-package io.bpic.cielo.client.resteasy.jsonb.adapters;
+package io.bpic.cielo.core.jsonb.adapters;
 
 import javax.json.bind.adapter.JsonbAdapter;
 import javax.json.bind.annotation.JsonbProperty;
@@ -22,7 +22,7 @@ public abstract class EnumMapperBase<A extends Enum<?>> implements JsonbAdapter<
 
     private final Map<A, String> javaToJsonMapping = new IdentityHashMap<>();
 
-    protected EnumMapperBase() {
+    EnumMapperBase() {
         Stream.of(getEnumType().getEnumConstants()).forEach(constant -> {
             final String asString;
             try {

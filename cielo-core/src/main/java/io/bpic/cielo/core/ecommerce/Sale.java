@@ -1,26 +1,25 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import io.bpic.cielo.core.jsonb.util.JsonbUtil;
+
+import javax.json.bind.JsonbBuilder;
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
  * Created: 23/10/2018 22:50.
  *
  * @author Bruno Palermo
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@SuppressWarnings("WeakerAccess")
 public class Sale {
 
-    @XmlElement(name ="MerchantOrderId")
+    @JsonbProperty(value ="MerchantOrderId")
     private String merchantOrderId;
 
-    @XmlElement(name ="Customer")
+    @JsonbProperty(value ="Customer")
     private Customer customer;
 
-    @XmlElement(name ="Payment")
+    @JsonbProperty(value ="Payment")
     private Payment payment;
 
     public Sale() {
@@ -71,6 +70,13 @@ public class Sale {
     public Sale setPayment(Payment payment) {
         this.payment = payment;
         return this;
+    }
+
+    public String toJson() {
+        return JsonbBuilder.newBuilder().
+                withConfig(JsonbUtil.createJSONBConfig()).
+                build().
+                toJson(this);
     }
 
 }

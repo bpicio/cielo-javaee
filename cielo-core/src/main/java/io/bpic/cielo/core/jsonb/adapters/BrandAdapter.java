@@ -7,5 +7,5 @@ import io.bpic.cielo.core.ecommerce.Brand;
  *
  * @author paler
  */
-public class BrandMapper extends EnumMapperBase<Brand> {
+public class BrandAdapter extends EnumMapperBase<Brand> {
 }

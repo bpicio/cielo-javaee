@@ -13,6 +13,4 @@ public class CreateSaleRequest extends AbstractSaleRequest {
         super(environment, merchant);
     }
 
-
-
 }

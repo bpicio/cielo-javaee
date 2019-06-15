@@ -1,26 +1,21 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
  * Created: 24/10/2018 00:18.
  *
  * @author Bruno Palermo
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Link {
 
-    @XmlElement(name = "Method")
+    @JsonbProperty(value = "Method")
     private String method;
 
-    @XmlElement(name = "Rel")
+    @JsonbProperty(value = "Rel")
     private String rel;
 
-    @XmlElement(name = "Href")
+    @JsonbProperty(value = "Href")
     private String href;
 
     public Link() {

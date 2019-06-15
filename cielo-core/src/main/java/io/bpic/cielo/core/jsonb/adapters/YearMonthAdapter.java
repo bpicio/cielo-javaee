@@ -9,18 +9,18 @@ import java.time.format.DateTimeFormatter;
  *
  * @author paler
  */
-public class YearMonthMapper implements JsonbAdapter<YearMonth, String> {
+public class YearMonthAdapter implements JsonbAdapter<YearMonth, String> {
 
     private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/yyyy");
 
     @Override
-    public String adaptToJson(YearMonth v) throws Exception {
+    public String adaptToJson(YearMonth v) {
         if (v == null) return null;
         return dtf.format(v);
     }
 
     @Override
-    public YearMonth adaptFromJson(String v) throws Exception {
+    public YearMonth adaptFromJson(String v) {
         if (v == null || v.isEmpty()) return null;
         try {
             return YearMonth.parse(v, dtf);

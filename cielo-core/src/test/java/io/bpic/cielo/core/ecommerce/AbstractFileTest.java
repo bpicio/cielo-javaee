@@ -1,13 +1,11 @@
 package io.bpic.cielo.core.ecommerce;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
-import org.junit.BeforeClass;
+import io.bpic.cielo.core.jsonb.util.JsonbUtil;
+import org.junit.Before;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
+import java.io.InputStream;
 
 /**
  * Created: 24/10/2018 00:10.
@@ -16,22 +14,20 @@ import java.net.URL;
  */
 public abstract class AbstractFileTest {
 
-    private static ObjectMapper mapper;
+    private static Jsonb jsonB;
 
-    @BeforeClass
-    public static void beforeClass() {
-        JaxbAnnotationModule module = new JaxbAnnotationModule();
-
-        mapper = new ObjectMapper();
-        mapper.registerModule(module);
+    @Before
+    public void before() {
+        jsonB = JsonbBuilder.newBuilder()
+                .withConfig(JsonbUtil.createJSONBConfig())
+                .build();
     }
 
-    <T> T readFile(String filename, Class<T> valueType) throws URISyntaxException, IOException {
+    <T> T readFile(String filename, Class<T> valueType) {
         ClassLoader classLoader = getClass().getClassLoader();
-        URL url = classLoader.getResource(filename);
-        assert url != null;
-        File file = new File(url.toURI());
-        return mapper.readValue(file, valueType);
+        InputStream stream = classLoader.getResourceAsStream(filename);
+
+        return jsonB.fromJson(stream, valueType);
     }
 
 }

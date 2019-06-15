@@ -7,5 +7,5 @@ import io.bpic.cielo.core.ecommerce.RecurrentInterval;
  *
  * @author paler
  */
-public class RecurrentInternvalMapper extends EnumMapperBase<RecurrentInterval> {
+public class RecurrentInternvalAdapter extends EnumMapperBase<RecurrentInterval> {
 }
