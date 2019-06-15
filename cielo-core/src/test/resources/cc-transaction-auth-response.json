@@ -1,0 +1,42 @@
+{
+  "MerchantOrderId":"2014111903",
+  "Customer":
+  {
+    "Name":"Comprador crédito autenticação"
+  },
+  "Payment":
+  {
+    "ServiceTaxAmount":0,
+    "Installments":1,
+    "Interest":"ByMerchant",
+    "Capture":false,
+    "Authenticate":true,
+    "CreditCard":
+    {
+      "CardNumber":"123412******1112",
+      "Holder":"Teste Holder",
+      "ExpirationDate":"12/2030",
+      "SaveCard":false,
+      "Brand":"Visa"
+    },
+    "AuthenticationUrl":"https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?id=c5158c1c7b475fdb91a7ad7cc094e7fe",
+    "Tid": "1006993069257E521001",
+    "SoftDescriptor":"123456789ABCD",
+    "PaymentId":"f2dbd5df-c2ee-482f-ab1b-7fee039108c0",
+    "Type":"CreditCard",
+    "Amount":15700,
+    "Currency":"BRL",
+    "Country":"BRA",
+    "ExtraDataCollection":[],
+    "Status":0,
+    "ReturnCode": "0",
+    "Links":
+    [
+      {
+        "Method":"GET",
+        "Rel":"self",
+        "Href":"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{Paymentid}"
+      }
+    ]
+  }
+}

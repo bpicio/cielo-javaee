@@ -1,0 +1,24 @@
+{
+  "MerchantOrderId":"2014111903",
+  "Customer":
+  {
+    "Name":"Comprador crédito autenticação"
+  },
+  "Payment":
+  {
+    "Type":"CreditCard",
+    "Amount":15700,
+    "Installments":1,
+    "Authenticate":true,
+    "SoftDescriptor":"123456789ABCD",
+    "ReturnUrl":"https://www.cielo.com.br",
+    "CreditCard":
+    {
+      "CardNumber":"1234123412341231",
+      "Holder":"Teste Holder",
+      "ExpirationDate":"12/2030",
+      "SecurityCode":"123",
+      "Brand":"Visa"
+    }
+  }
+}

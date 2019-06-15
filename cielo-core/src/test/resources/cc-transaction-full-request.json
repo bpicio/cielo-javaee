@@ -1,0 +1,46 @@
+{
+  "MerchantOrderId":"2014111701",
+  "Customer":{
+    "Name":"Comprador crédito completo",
+    "Email":"compradorteste@teste.com",
+    "Birthdate":"1991-01-02",
+    "Address":{
+      "Street":"Rua Teste",
+      "Number":"123",
+      "Complement":"AP 123",
+      "ZipCode":"12345987",
+      "City":"Rio de Janeiro",
+      "State":"RJ",
+      "Country":"BRA"
+    },
+    "DeliveryAddress": {
+      "Street": "Rua Teste",
+      "Number": "123",
+      "Complement": "AP 123",
+      "ZipCode": "12345987",
+      "City": "Rio de Janeiro",
+      "State": "RJ",
+      "Country": "BRA"
+    }
+  },
+  "Payment":{
+    "Type":"CreditCard",
+    "Amount":15700,
+    "Currency":"BRL",
+    "Country":"BRA",
+    "ServiceTaxAmount":0,
+    "Installments":1,
+    "Interest":"ByMerchant",
+    "Capture":true,
+    "Authenticate":false,
+    "SoftDescriptor":"123456789ABCD",
+    "CreditCard":{
+      "CardNumber":"1234123412341231",
+      "Holder":"Teste Holder",
+      "ExpirationDate":"12/2030",
+      "SecurityCode":"123",
+      "SaveCard":"false",
+      "Brand":"Visa"
+    }
+  }
+}

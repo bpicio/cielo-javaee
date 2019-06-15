@@ -1,0 +1,1 @@
+keytool -import -alias ecommercecielo -file ..\certificates\ecommerce_cielo.pem -keystore ..\src\main\resources\truststore.jks -deststorepass changeit
