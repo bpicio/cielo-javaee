@@ -1,9 +1,6 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.json.bind.annotation.JsonbProperty;
 import java.time.MonthDay;
 
 /**
@@ -11,30 +8,29 @@ import java.time.MonthDay;
  *
  * @author Bruno Palermo
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@SuppressWarnings("WeakerAccess")
 public class CardToken {
 
-    @XmlElement(name ="Brand")
+    @JsonbProperty(value ="Brand")
     private Brand brand;
 
-    @XmlElement(name ="CardNumber")
+    @JsonbProperty(value ="CardNumber")
     private String cardNumber;
 
-    @XmlElement(name ="CardToken")
+    @JsonbProperty(value ="CardToken")
     private String cardToken;
 
-    @XmlElement(name ="CustomerName")
+    @JsonbProperty(value ="CustomerName")
     private String customerName;
 
-    @XmlElement(name ="ExpirationDate")
+    @JsonbProperty(value ="ExpirationDate")
     private MonthDay expirationDate;
 
-    @XmlElement(name ="Holder")
+    @JsonbProperty(value ="Holder")
     private String holder;
 
-    @XmlElement(name ="Link")
-    private Object links;
+    @JsonbProperty(value ="Links")
+    private Link links;
 
     public Brand getBrand() {
         return brand;
@@ -46,6 +42,14 @@ public class CardToken {
 
     public String getCardToken() {
         return cardToken;
+    }
+
+    public void setCardToken(String cardToken) {
+        this.cardToken = cardToken;
+    }
+
+    public void setLinks(Link links) {
+        this.links = links;
     }
 
     public String getCustomerName() {

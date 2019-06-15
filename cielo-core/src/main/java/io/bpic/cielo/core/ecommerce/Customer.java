@@ -1,9 +1,9 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import io.bpic.cielo.core.jsonb.adapters.LocalDateISOAdapter;
+
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTypeAdapter;
 import java.time.LocalDate;
 
 /**
@@ -11,29 +11,29 @@ import java.time.LocalDate;
  *
  * @author Bruno Palermo
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@SuppressWarnings("WeakerAccess")
 public class Customer {
     
-    @XmlElement(name ="Name")
+    @JsonbProperty(value ="Name")
     private String name;
 
-    @XmlElement(name ="Email")
+    @JsonbProperty(value ="Email")
     private String email;
 
-    @XmlElement(name ="BirthDate")
+    @JsonbTypeAdapter(LocalDateISOAdapter.class)
+    @JsonbProperty(value ="Birthdate")
     private LocalDate birthDate;
 
-    @XmlElement(name ="Identity")
+    @JsonbProperty(value ="Identity")
     private String identity;
 
-    @XmlElement(name ="IdentityType")
-    private String identityType;
+    @JsonbProperty(value ="IdentityType")
+    private IdentityType identityType;
 
-    @XmlElement(name ="Address")
+    @JsonbProperty(value ="Address")
     private Address address;
 
-    @XmlElement(name ="DeliveryAddress")
+    @JsonbProperty(value ="DeliveryAddress")
     private Address deliveryAddress;
 
     public Customer() {
@@ -95,7 +95,7 @@ public class Customer {
         return identity;
     }
 
-    public String getIdentityType() {
+    public IdentityType getIdentityType() {
         return identityType;
     }
 
@@ -108,9 +108,9 @@ public class Customer {
         return this;
     }
 
-    public Customer setIdentity(String identityType, String identity) {
+    public Customer setIdentity(IdentityType type, String identity) {
         this.identity = identity;
-        this.identityType = identityType;
+        this.identityType = type;
         return this;
     }
     

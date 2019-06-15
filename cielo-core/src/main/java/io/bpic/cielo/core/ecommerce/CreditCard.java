@@ -1,10 +1,6 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import java.time.MonthDay;
+import javax.json.bind.annotation.JsonbProperty;
 import java.time.YearMonth;
 
 /**
@@ -12,29 +8,31 @@ import java.time.YearMonth;
  *
  * @author Bruno Palermo
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@SuppressWarnings("WeakerAccess")
 public class CreditCard {
 
-    @XmlElement(name ="CardNumber")
+    @JsonbProperty(value ="CustomerName")
+    private String customerName;
+
+    @JsonbProperty(value ="CardNumber")
     private String cardNumber;
 
-    @XmlElement(name ="Holder")
+    @JsonbProperty(value ="Holder")
     private String holder;
 
-    @XmlElement(name ="ExpirationDate")
+    @JsonbProperty(value ="ExpirationDate")
     private YearMonth expirationDate;
 
-    @XmlElement(name ="SecurityCode")
+    @JsonbProperty(value ="SecurityCode")
     private String securityCode;
 
-    @XmlElement(name ="SaveCard")
+    @JsonbProperty(value ="SaveCard")
     private boolean saveCard = false;
 
-    @XmlElement(name ="Brand")
+    @JsonbProperty(value ="Brand")
     private Brand brand;
 
-    @XmlElement(name ="CardToken")
+    @JsonbProperty(value ="CardToken")
     private String cardToken;
 
     public CreditCard() {
@@ -43,6 +41,15 @@ public class CreditCard {
     public CreditCard(String securityCode, Brand brand) {
         setSecurityCode(securityCode);
         setBrand(brand);
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public CreditCard setCustomerName(String customerName) {
+        this.customerName = customerName;
+        return this;
     }
 
     public Brand getBrand() {

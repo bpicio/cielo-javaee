@@ -2,26 +2,25 @@ package io.bpic.cielo.core.ecommerce;
 
 /**
  * API Environment URLs
- * <p/>
- * <li>{@link #PRODUCTION}</li>
- * <li>{@link #SANDBOX}</li>
+ *
+ * {@link #PRODUCTION}
+ * {@link #SANDBOX}
  */
 public enum Environment implements io.bpic.cielo.core.Environment {
 
     /**
      * Environment.PRODUCTION
-     * <p/>
-     * <li>apiUrl = https://api.cieloecommerce.cielo.com.br/</li>
-     * <li>apiQueryUrl = https://apiquery.cieloecommerce.cielo.com.br/</li>
+     *
+     * apiUrl = https://api.cieloecommerce.cielo.com.br/
+     * apiQueryUrl = https://apiquery.cieloecommerce.cielo.com.br/
      */
     PRODUCTION("https://api.cieloecommerce.cielo.com.br/", "https://apiquery.cieloecommerce.cielo.com.br/"),
 
     /**
      * Environment.SANDBOX
-     * <p/>
-     * <li>apiUrl = https://apisandbox.cieloecommerce.cielo.com.br/</li>
-     * <li>apiQueryUrl =
-     * https://apiquerysandbox.cieloecommerce.cielo.com.br/</li>
+     *
+     * apiUrl = https://apisandbox.cieloecommerce.cielo.com.br/
+     * apiQueryUrl = https://apiquerysandbox.cieloecommerce.cielo.com.br/
      */
     SANDBOX("https://apisandbox.cieloecommerce.cielo.com.br/", "https://apiquerysandbox.cieloecommerce.cielo.com.br/");
 

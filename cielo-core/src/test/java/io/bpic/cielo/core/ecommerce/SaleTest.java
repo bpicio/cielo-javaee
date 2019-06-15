@@ -2,8 +2,6 @@ package io.bpic.cielo.core.ecommerce;
 
 import org.junit.Test;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.time.YearMonth;
 import java.util.List;
 
@@ -17,7 +15,7 @@ import static org.junit.Assert.*;
 public class SaleTest extends AbstractFileTest {
 
     @Test
-    public void ccSimpleTransactionRequestTest() throws IOException, URISyntaxException {
+    public void ccSimpleTransactionRequestTest() {
         Sale sale = readFile("cc-transaction-simple-request.json", Sale.class);
 
         assertNotNull(sale);
@@ -29,7 +27,7 @@ public class SaleTest extends AbstractFileTest {
 
         Payment payment = sale.getPayment();
         assertNotNull(payment);
-        assertEquals(CardType.CREDIT_CARD, payment.getType());
+        assertEquals(PaymentType.CREDIT_CARD, payment.getType());
         assertEquals((Integer) 15700, payment.getAmount());
         assertEquals((Integer) 1, payment.getInstallments());
         assertEquals("123456789ABCD", payment.getSoftDescriptor());
@@ -47,7 +45,7 @@ public class SaleTest extends AbstractFileTest {
     }
 
     @Test
-    public void ccSimpleTransactionResponseTest() throws IOException, URISyntaxException {
+    public void ccSimpleTransactionResponseTest() {
         SaleResponse response = readFile("cc-transaction-simple-response.json", SaleResponse.class);
         assertNotNull(response);
 
@@ -79,13 +77,13 @@ public class SaleTest extends AbstractFileTest {
         assertEquals("0305023644309", payment.getTid());
         assertEquals("123456", payment.getAuthorizationCode());
         assertEquals("24bc8366-fc31-4d6c-8555-17049a836a07", payment.getPaymentId());
-        assertEquals(CardType.CREDIT_CARD, payment.getType());
+        assertEquals(PaymentType.CREDIT_CARD, payment.getType());
         assertEquals((Integer) 15700, payment.getAmount());
         assertEquals(Currency.BRL, payment.getCurrency());
         assertEquals("BRA", payment.getCountry());
-        assertEquals(Status.AUTHORIZED, payment.getStatus());
+        assertEquals(SaleStatus.AUTHORIZED, payment.getStatus());
         assertEquals("4", payment.getReturnCode());
-        // assertEquals(Status.AUTHORIZED, payment.getReturnCode());
+        // assertEquals(SaleStatus.AUTHORIZED, payment.getReturnCode());
 
 
         assertEquals("Operation Successful", payment.getReturnMessage());
@@ -93,6 +91,13 @@ public class SaleTest extends AbstractFileTest {
         List<Link> links = payment.getLinks();
         assertNotNull(links);
         assertEquals(3, links.size());
+    }
+
+    @Test
+    public void ccFullTransactionRequestTest() {
+        Sale sale = readFile("cc-transaction-full-request.json", Sale.class);
+
+        assertNotNull(sale);
     }
 
 }

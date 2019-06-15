@@ -1,8 +1,9 @@
-package io.bpic.cielo.client.execptions;
+package io.bpic.cielo.client.exceptions;
 
 import io.bpic.cielo.core.ecommerce.Error;
 
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 /**
  * Created: 24/10/2018 20:52.
@@ -11,14 +12,14 @@ import javax.ws.rs.core.Response;
  */
 public class CieloErrorException extends CieloClientException {
 
-    private Error[] error;
+    private List<Error> error;
 
-    public CieloErrorException(Response response, Error[] error) {
+    public CieloErrorException(Response response, List<Error> error) {
         super(response);
         this.error = error;
     }
 
-    public Error[] getError() {
+    public List<Error> getError() {
         return error;
     }
 }

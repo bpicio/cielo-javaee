@@ -1,10 +1,7 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import java.util.ArrayList;
+import javax.json.bind.annotation.JsonbProperty;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -12,131 +9,142 @@ import java.util.List;
  *
  * @author Bruno Palermo
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@SuppressWarnings("WeakerAccess")
 public class Payment {
 
-    @XmlElement(name ="ServiceTaxAmount")
+    @JsonbProperty(value ="ServiceTaxAmount")
     private Integer serviceTaxAmount;
 
-    @XmlElement(name ="Installments")
+    @JsonbProperty(value ="Installments")
     private Integer installments;
 
-    @XmlElement(name ="Interest")
+    @JsonbProperty(value ="Interest")
     private Interest interest;
 
-    @XmlElement(name ="Capture")
+    @JsonbProperty(value ="Capture")
     private boolean capture = false;
 
-    @XmlElement(name ="Authenticate")
+    @JsonbProperty(value ="Authenticate")
     private boolean authenticate = false;
 
-    @XmlElement(name ="Recurrent")
+    @JsonbProperty(value ="Recurrent")
     private boolean recurrent;
 
-    @XmlElement(name ="RecurrentPayment")
+    @JsonbProperty(value ="RecurrentPayment")
     private RecurrentPayment recurrentPayment;
 
-    @XmlElement(name ="CreditCard")
+    @JsonbProperty(value ="CreditCard")
     private CreditCard creditCard;
 
-    @XmlElement(name ="DebitCard")
+    @JsonbProperty(value ="DebitCard")
     private DebitCard debitCard;
 
-    @XmlElement(name ="Tid")
+    @JsonbProperty(value ="Tid")
     private String tid;
 
-    @XmlElement(name ="ProofOfSale")
+    @JsonbProperty(value ="ProofOfSale")
     private String proofOfSale;
 
-    @XmlElement(name ="AuthorizationCode")
+    @JsonbProperty(value ="AuthorizationCode")
     private String authorizationCode;
 
-    @XmlElement(name ="SoftDescriptor")
+    @JsonbProperty(value ="SoftDescriptor")
     private String softDescriptor = "";
 
-    @XmlElement(name ="ReturnUrl")
+    @JsonbProperty(value ="ReturnUrl")
     private String returnUrl;
 
-    @XmlElement(name ="Provider")
+    @JsonbProperty(value ="Provider")
     private Provider provider;
 
-    @XmlElement(name ="PaymentId")
+    @JsonbProperty(value ="ProviderReturnCode")
+    private Integer providerReturnCode;
+
+    @JsonbProperty(value ="ProviderReturnMessage")
+    private String providerReturnMessage;
+
+    @JsonbProperty(value ="PaymentId")
     private String paymentId;
 
-    @XmlElement(name ="Type")
-    private CardType type;
+    @JsonbProperty(value ="Type")
+    private PaymentType type;
 
-    @XmlElement(name ="Amount")
+    @JsonbProperty(value ="Amount")
     private Integer amount;
 
-    @XmlElement(name ="ReceivedDate")
+    @JsonbProperty(value ="ReceivedDate")
     private String receivedDate;
 
-    @XmlElement(name ="CapturedAmount")
+    @JsonbProperty(value ="CapturedAmount")
     private Integer capturedAmount;
 
-    @XmlElement(name ="CapturedDate")
+    @JsonbProperty(value ="CapturedDate")
     private String capturedDate;
 
-    @XmlElement(name ="Currency")
+    @JsonbProperty(value ="Currency")
     private Currency currency;
 
-    @XmlElement(name ="Country")
+    @JsonbProperty(value ="Country")
     private String country;
 
-    @XmlElement(name ="ReturnCode")
+    @JsonbProperty(value ="ReasonCode")
+    private Integer reasonCode;
+
+    @JsonbProperty(value ="ReasonMessage")
+    private String reasonMessage;
+
+    @JsonbProperty(value ="ReturnCode")
     private String returnCode;
 
-    @XmlElement(name ="ReturnMessage")
+    @JsonbProperty(value ="ReturnMessage")
     private String returnMessage;
 
-    @XmlElement(name ="Status")
-    private Status status;
+    @JsonbProperty(value ="Status")
+    private SaleStatus status;
 
-    @XmlElement(name = "IsSplitted")
+    @JsonbProperty(value = "IsSplitted")
     private boolean splitted;
 
-    @XmlElement(name ="Links")
-    private List<Link> links = new ArrayList<>();
+    @JsonbProperty(value ="Links")
+    private List<Link> links;
 
-    @XmlElement(name ="ExtraDataCollection")
-    private Object extraDataCollection[];
+    @JsonbProperty(value = "ExtraDataCollection")
+    private Object[] extraDataCollection;
 
-    @XmlElement(name ="ExpirationDate")
-    private String expirationDate;
+    @JsonbProperty(value ="ExpirationDate")
+    private LocalDate expirationDate;
 
-    @XmlElement(name ="Url")
+    @JsonbProperty(value ="Url")
     private String url;
 
-    @XmlElement(name ="Number")
+    @JsonbProperty(value ="Number")
     private String number;
 
-    @XmlElement(name ="BarCodeNumber")
+    @JsonbProperty(value ="BarCodeNumber")
     private String barCodeNumber;
 
-    @XmlElement(name ="DigitableLine")
+    @JsonbProperty(value ="DigitableLine")
     private String digitableLine;
 
-    @XmlElement(name ="Address")
+    @JsonbProperty(value ="Address")
     private String address;
 
-    @XmlElement(name ="BoletoNumber")
+    @JsonbProperty(value ="BoletoNumber")
     private String boletoNumber;
 
-    @XmlElement(name ="Assignor")
+    @JsonbProperty(value ="Assignor")
     private String assignor;
 
-    @XmlElement(name ="Demonstrative")
+    @JsonbProperty(value ="Demonstrative")
     private String demonstrative;
 
-    @XmlElement(name ="Identification")
+    @JsonbProperty(value ="Identification")
     private String identification;
 
-    @XmlElement(name ="Instructions")
+    @JsonbProperty(value ="Instructions")
     private String instructions;
 
-    @XmlElement(name ="AuthenticationUrl")
+    @JsonbProperty(value ="AuthenticationUrl")
     private String authenticationUrl;
 
     public Payment() {
@@ -152,14 +160,14 @@ public class Payment {
     }
 
     public CreditCard creditCard(String securityCode, Brand brand) {
-        setType(CardType.CREDIT_CARD);
+        setType(PaymentType.CREDIT_CARD);
         setCreditCard(new CreditCard(securityCode, brand));
 
         return getCreditCard();
     }
 
     public DebitCard debitCard(String securityCode, Brand brand) {
-        setType(CardType.DEBIT_CARD);
+        setType(PaymentType.DEBIT_CARD);
         setDebitCard(new DebitCard(securityCode, brand));
 
         return getDebitCard();
@@ -190,6 +198,26 @@ public class Payment {
 
     public String getAuthenticationUrl() {
         return authenticationUrl;
+    }
+
+    public void setSplitted(boolean splitted) {
+        this.splitted = splitted;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
+
+    public void setExtraDataCollection(Object[] extraDataCollection) {
+        this.extraDataCollection = extraDataCollection;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public void setAuthenticationUrl(String authenticationUrl) {
+        this.authenticationUrl = authenticationUrl;
     }
 
     public Payment setAuthorizationCode(String authorizationCode) {
@@ -372,11 +400,11 @@ public class Payment {
         return this;
     }
 
-    public Status getStatus() {
+    public SaleStatus getStatus() {
         return status;
     }
 
-    public Payment setStatus(Status status) {
+    public Payment setStatus(SaleStatus status) {
         this.status = status;
         return this;
     }
@@ -394,17 +422,22 @@ public class Payment {
         return this;
     }
 
-    public CardType getType() {
+    public PaymentType getType() {
         return type;
     }
 
-    public Payment setType(CardType type) {
+    public Payment setType(PaymentType type) {
         this.type = type;
         return this;
     }
 
     public String getAddress() {
         return address;
+    }
+
+    public Payment setAddress(String address) {
+        this.address = address;
+        return this;
     }
 
     public boolean isAuthenticate() {
@@ -418,6 +451,10 @@ public class Payment {
 
     public String getBarCodeNumber() {
         return barCodeNumber;
+    }
+
+    public void setBarCodeNumber(String barCodeNumber) {
+        this.barCodeNumber = barCodeNumber;
     }
 
     public boolean isCapture() {
@@ -435,6 +472,15 @@ public class Payment {
 
     public Payment setBoletoNumber(String boletoNumber) {
         this.boletoNumber = boletoNumber;
+        return this;
+    }
+
+    public String getAssignor() {
+        return assignor;
+    }
+
+    public Payment setAssignor(String assignor) {
+        this.assignor = assignor;
         return this;
     }
 
@@ -465,12 +511,29 @@ public class Payment {
         return this;
     }
 
+    public Integer getReasonCode() {
+        return reasonCode;
+    }
+
+    public void setReasonCode(Integer reasonCode) {
+        this.reasonCode = reasonCode;
+    }
+
     public String getDigitableLine() {
         return digitableLine;
     }
 
-    public String getExpirationDate() {
+    public void setDigitableLine(String digitableLine) {
+        this.digitableLine = digitableLine;
+    }
+
+    public LocalDate getExpirationDate() {
         return expirationDate;
+    }
+
+    public Payment setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
+        return this;
     }
 
     public Object[] getExtraDataCollection() {
@@ -489,4 +552,31 @@ public class Payment {
         return url;
     }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getReasonMessage() {
+        return reasonMessage;
+    }
+
+    public void setReasonMessage(String reasonMessage) {
+        this.reasonMessage = reasonMessage;
+    }
+
+    public Integer getProviderReturnCode() {
+        return providerReturnCode;
+    }
+
+    public void setProviderReturnCode(Integer providerReturnCode) {
+        this.providerReturnCode = providerReturnCode;
+    }
+
+    public String getProviderReturnMessage() {
+        return providerReturnMessage;
+    }
+
+    public void setProviderReturnMessage(String providerReturnMessage) {
+        this.providerReturnMessage = providerReturnMessage;
+    }
 }

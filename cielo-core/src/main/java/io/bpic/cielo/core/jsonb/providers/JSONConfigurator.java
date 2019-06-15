@@ -1,10 +1,9 @@
-package io.bpic.cielo.client.resteasy.providers;
+package io.bpic.cielo.core.jsonb.providers;
 
-import io.bpic.cielo.client.resteasy.jsonb.adapters.PaymentTypeMapper;
+import io.bpic.cielo.core.jsonb.util.JsonbUtil;
 
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
-import javax.json.bind.JsonbConfig;
 import javax.ws.rs.ext.ContextResolver;
 
 /**
@@ -16,14 +15,9 @@ public class JSONConfigurator implements ContextResolver<Jsonb> {
 
     @Override
     public Jsonb getContext(Class aClass) {
-        JsonbConfig config = new JsonbConfig()
-                .withAdapters(
-                        new PaymentTypeMapper()
-                )
-                .withNullValues(false);
-
         return JsonbBuilder.newBuilder()
-                .withConfig(config)
+                .withConfig(JsonbUtil.createJSONBConfig())
                 .build();
     }
+
 }

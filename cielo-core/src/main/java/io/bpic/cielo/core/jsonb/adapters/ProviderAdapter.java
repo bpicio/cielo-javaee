@@ -7,5 +7,5 @@ import io.bpic.cielo.core.ecommerce.Provider;
  *
  * @author paler
  */
-public class ProviderMapper extends EnumMapperBase<Provider> {
+public class ProviderAdapter extends EnumMapperBase<Provider> {
 }

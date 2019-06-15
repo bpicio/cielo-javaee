@@ -7,5 +7,5 @@ import io.bpic.cielo.core.ecommerce.PaymentType;
  *
  * @author paler
  */
-public class PaymentTypeMapper extends EnumMapperBase<PaymentType> {
+public class PaymentTypeAdapter extends EnumMapperBase<PaymentType> {
 }

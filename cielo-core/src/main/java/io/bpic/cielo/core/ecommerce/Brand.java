@@ -1,41 +1,39 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
  * Created: 23/10/2018 22:34.
  *
  * @author Bruno Palermo
  */
-@XmlEnum
 public enum Brand {
 
-    @XmlEnumValue(value = "Visa")
+    @JsonbProperty(value = "Visa")
     VISA,
 
-    @XmlEnumValue(value = "Master")
+    @JsonbProperty(value = "Master")
     MASTER,
 
-    @XmlEnumValue(value = "Amex")
+    @JsonbProperty(value = "Amex")
     AMEX,
 
-    @XmlEnumValue(value = "Elo")
+    @JsonbProperty(value = "Elo")
     ELO,
 
-    @XmlEnumValue(value = "Aura")
+    @JsonbProperty(value = "Aura")
     AURA,
 
-    @XmlEnumValue(value = "JCB")
+    @JsonbProperty(value = "JCB")
     JCB,
 
-    @XmlEnumValue(value = "Diners")
+    @JsonbProperty(value = "Diners")
     DINERS,
 
-    @XmlEnumValue(value = "Discover")
+    @JsonbProperty(value = "Discover")
     DISCOVER,
 
-    @XmlEnumValue(value = "Hipercard")
+    @JsonbProperty(value = "Hipercard")
     HIPERCARD,
 
 

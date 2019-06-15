@@ -1,4 +1,4 @@
-package io.bpic.cielo.client.execptions;
+package io.bpic.cielo.client.exceptions;
 
 import javax.ws.rs.core.Response;
 

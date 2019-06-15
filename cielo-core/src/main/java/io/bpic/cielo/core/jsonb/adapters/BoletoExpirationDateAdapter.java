@@ -9,18 +9,18 @@ import java.time.format.DateTimeFormatter;
  *
  * @author paler
  */
-public class BoletoExpirationDateMapper implements JsonbAdapter<LocalDate, String> {
+public class BoletoExpirationDateAdapter implements JsonbAdapter<LocalDate, String> {
 
     private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy");
 
     @Override
-    public String adaptToJson(LocalDate v) throws Exception {
+    public String adaptToJson(LocalDate v) {
         if (v == null) return null;
         return dtf.format(v);
     }
 
     @Override
-    public LocalDate adaptFromJson(String v) throws Exception {
+    public LocalDate adaptFromJson(String v) {
         if (v == null || v.isEmpty()) return null;
         try {
             return LocalDate.parse(v, dtf);

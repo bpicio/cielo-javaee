@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author paler
  */
-public class LocalDateISOMapper implements JsonbAdapter<LocalDate, String> {
+public class LocalDateISOAdapter implements JsonbAdapter<LocalDate, String> {
 
     private static final DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE;
 

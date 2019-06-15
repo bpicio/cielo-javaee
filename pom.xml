@@ -5,16 +5,57 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.bpic.cielo</groupId>
-    <artifactId>cielo-java-v3</artifactId>
+    <artifactId>cielo-javaee</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+
     <modules>
         <module>cielo-core</module>
-        <module>cielo-client-resteasy</module>
         <module>cielo-client</module>
     </modules>
 
-    <name>Cielo Java v3</name>
+    <name>Cielo Jakarta EE</name>
     <packaging>pom</packaging>
+
+    <licenses>
+        <license>
+            <name>GNU GPLv3 License</name>
+            <url>http://www.opensource.org/licenses/GPL-3.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Bruno Palermo</name>
+            <email>bruno@bpic.io</email>
+            <organization>BP Internet</organization>
+            <organizationUrl>https://github.com/bpicio</organizationUrl>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/bpicio/cielo-javaee/issues</url>
+    </issueManagement>
+
+    <!-- Source Control Information, Github Stuff -->
+    <scm>
+        <connection>scm:git:https://github.com/bpicio/cielo-javaee.git</connection>
+        <developerConnection>scm:git:ssh://github.com/bpicio/cielo-javaee.git</developerConnection>
+        <url>https://github.com/bpicio/cielo-javaee</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,12 +64,19 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <!-- Versions -->
-        <version.javaee-api>7.0</version.javaee-api>
-        <version.wildfly>14.0.1.Final</version.wildfly>
+        <version.javaee-api>8.0</version.javaee-api>
+        <version.wildfly>17.0.0.Final</version.wildfly>
+        <version.resteasy-json-binding-provider>3.7.0.Final</version.resteasy-json-binding-provider>
+        <version.commons-logging>1.2</version.commons-logging>
         <version.junit>4.12</version.junit>
 
         <!-- Plug-ins -->
         <version.maven-jar-plugin>3.2.2</version.maven-jar-plugin>
+        <version.maven-javadoc-plugin>3.1.0</version.maven-javadoc-plugin>
+        <version.maven-source-plugin>3.1.0</version.maven-source-plugin>
+        <version.jgitflow-maven-plugin>1.0-m5.1</version.jgitflow-maven-plugin>
+        <version.nexus-staging-maven-plugin>1.6.8</version.nexus-staging-maven-plugin>
+        <version.maven-gpg-plugin>1.6</version.maven-gpg-plugin>
     </properties>
 
     <dependencyManagement>
@@ -53,6 +101,18 @@
             </dependency>
 
             <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-json-binding-provider</artifactId>
+                <version>${version.resteasy-json-binding-provider}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${version.commons-logging}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>wildfly-javaee8</artifactId>
                 <scope>import</scope>
@@ -64,7 +124,6 @@
                 <groupId>javax</groupId>
                 <artifactId>javaee-api</artifactId>
                 <version>${version.javaee-api}</version>
-                <scope>provided</scope>
             </dependency>
 
             <!-- Test -->
@@ -72,10 +131,83 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${version.junit}</version>
-                <scope>test</scope>
             </dependency>
 
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>external.atlassian.jgitflow</groupId>
+                <artifactId>jgitflow-maven-plugin</artifactId>
+                <version>${version.jgitflow-maven-plugin}</version>
+                <configuration>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>${version.maven-javadoc-plugin}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${version.maven-source-plugin}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${version.maven-gpg-plugin}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${version.nexus-staging-maven-plugin}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

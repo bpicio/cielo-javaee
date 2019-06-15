@@ -1,9 +1,6 @@
 package io.bpic.cielo.core.ecommerce;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.json.bind.annotation.JsonbProperty;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,65 +9,64 @@ import java.util.List;
  *
  * @author Bruno Palermo
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@SuppressWarnings("WeakerAccess")
 public class RecurrentPayment {
 
-    @XmlElement(name ="RecurrentPaymentId")
+    @JsonbProperty(value ="RecurrentPaymentId")
     private String recurrentPaymentId;
 
-    @XmlElement(name ="NextRecurrency")
+    @JsonbProperty(value ="NextRecurrency")
     private String nextRecurrence;
 
-    @XmlElement(name ="StartDate")
+    @JsonbProperty(value ="StartDate")
     private String startDate;
 
-    @XmlElement(name ="EndDate")
+    @JsonbProperty(value ="EndDate")
     private String endDate;
 
-    @XmlElement(name ="Interval")
+    @JsonbProperty(value ="Interval")
     private RecurrentInterval interval;
 
-    @XmlElement(name ="Amount")
+    @JsonbProperty(value ="Amount")
     private Integer amount;
 
-    @XmlElement(name ="Country")
+    @JsonbProperty(value ="Country")
     private String country;
 
-    @XmlElement(name ="CreateDate")
+    @JsonbProperty(value ="CreateDate")
     private String createDate;
 
-    @XmlElement(name ="Currency")
+    @JsonbProperty(value ="Currency")
     private Currency currency;
 
-    @XmlElement(name ="CurrentRecurrencyTry")
+    @JsonbProperty(value ="CurrentRecurrencyTry")
     private Integer currentRecurrenceTry;
 
-    @XmlElement(name ="Provider")
+    @JsonbProperty(value ="Provider")
     private Provider provider;
 
-    @XmlElement(name ="RecurrencyDay")
+    @JsonbProperty(value ="RecurrencyDay")
     private Integer recurrenceDay;
 
-    @XmlElement(name ="SuccessfulRecurrences")
+    @JsonbProperty(value ="SuccessfulRecurrences")
     private Integer successfulRecurrences;
 
-    @XmlElement(name ="AuthorizeNow")
+    @JsonbProperty(value ="AuthorizeNow")
     private boolean authorizeNow;
 
-    @XmlElement(name ="ReasonCode")
+    @JsonbProperty(value ="ReasonCode")
     private Integer reasonCode;
 
-    @XmlElement(name ="ReasonMessage")
+    @JsonbProperty(value ="ReasonMessage")
     private String reasonMessage;
 
-    @XmlElement(name ="Status")
+    @JsonbProperty(value ="SaleStatus")
     private Integer status;
 
-    @XmlElement(name ="Link")
-    private Object links[];
+    @JsonbProperty(value ="Link")
+    private Object[] links;
 
-    @XmlElement(name ="RecurrentTransactions")
+    @JsonbProperty(value ="RecurrentTransactions")
     private List<RecurrentTransaction> recurrentTransactions = new ArrayList<>();
 
     public RecurrentPayment() {
@@ -246,4 +242,7 @@ public class RecurrentPayment {
         return links;
     }
 
+    public void setLinks(Object[] links) {
+        this.links = links;
+    }
 }
