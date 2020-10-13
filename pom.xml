@@ -70,7 +70,7 @@
         <version.wildfly>17.0.0.Final</version.wildfly>
         <version.resteasy-json-binding-provider>3.7.0.Final</version.resteasy-json-binding-provider>
         <version.commons-logging>1.2</version.commons-logging>
-        <version.junit>4.12</version.junit>
+        <version.junit>4.13.1</version.junit>
 
         <!-- Plug-ins -->
         <version.maven-jar-plugin>3.2.2</version.maven-jar-plugin>
